@@ -10,6 +10,9 @@ pipeline {
         DB_IP       = "10.0.0.1"
         DB_HOST     = "DEV_APP_01"
     }
+    options{
+        timeout(time: 10, unit: 'SECONDS')
+    }
      // Build 
     stages {
         stage('Checkout'){
@@ -17,6 +20,7 @@ pipeline {
                 script{
                     sh """
                         echo "Hello CheckOut"
+                        sleep 10 
                         env 
                     """
                 }
