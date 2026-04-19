@@ -7,6 +7,7 @@ pipeline {
     enviornment {
         My_APP_NAME= "DEV"
     }
+
     }
      // Build 
     stages {
@@ -44,4 +45,3 @@ pipeline {
         }
 
     }
-}
