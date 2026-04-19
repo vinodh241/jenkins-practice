@@ -17,7 +17,7 @@ pipeline {
                 script{
                     sh """
                         echo "Hello CheckOut"
-                        env 
+                        env $DB_HOST
                     """
                 }
             }
