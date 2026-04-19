@@ -5,7 +5,7 @@ pipeline {
         }
     }
     enviornment {
-        profile='DEV'
+        My_APP_NAME= "DEV"
     }
     }
      // Build 
