@@ -22,6 +22,7 @@ pipeline {
             }
         }
     }
+}
     post{
         always{
             echo 'Hello-world Pipeline job successfull -when its failed or success'
