@@ -4,7 +4,7 @@ pipeline {
             label 'AGENT-1'
         }
     }
-    enviornment {
+    enviornment{
         My_APP_NAME= "DEV"
     }
      // Build 
