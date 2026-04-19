@@ -43,5 +43,5 @@ pipeline {
         failure{
             echo 'Hello-world failure condition'
         }
-
     }
+}
