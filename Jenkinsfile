@@ -1,44 +1,19 @@
-pipeline{
-    agent any 
-    stages
-        stage('Build') {
-            steps {
-               echo "Building..."
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing....'
-            }
-        }
-        stage('Deploy') {
-            steps{
-                echo 'Deploy...'
-            }
-        }
-
-    }
-
- }
-
-
-
-
 pipeline {
     agent any
     stages {
-        stage('Build') {
-            steps {
-                //
+        stage('Checkout'){
+            steps{
+                echo 'Git clone https://git.hub.com-branchname'
             }
         }
-        stage('Test') {
-            steps {
-                //
+        stage('Build'){
+            steps{
+                echo 'Building...'
             }
         }
-        stage('Deploy') {
-            steps {
-                //
+        stage('Deploy'){
+            steps{
+                echo 'Deploy....'
             }
         }
     }
