@@ -11,7 +11,7 @@ pipeline {
         DB_HOST     = "DEV_APP_01"
     }
     options{
-        timeout(time: 10, unit: 'SECONDS')
+        timeout(time: 30, unit: 'SECONDS')
     }
      // Build 
     stages {
