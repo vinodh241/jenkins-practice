@@ -39,11 +39,11 @@ pipeline {
     }
     post{
         always{
-            echo 'Hello-world Pipeline job successfull -when its failed or success'
+            echo 'Hello-world Pipeline job'
            // deleteDir()
         }
         success{
-            echo 'Hello-world successfull condition'
+            echo 'Hello-world job executed successfull condition'
         }
         failure{
             echo 'Hello-world failure condition'
