@@ -3,12 +3,20 @@ pipeline {
         node {
             label 'AGENT-1'
         }
+    enviornment{
+        profile='Dev'
+    }
     }
      // Build 
     stages {
         stage('Checkout'){
             steps{
-                echo 'Git clone https://git.hub.com-branchname'
+                script{
+                    sh """
+                        echo "Hello CheckOut"
+                        env 
+                    """
+                }
             }
         }
         stage('Build'){
