@@ -25,6 +25,7 @@ pipeline {
     post{
         always{
             echo 'Hello-world Pipeline job successfull -when its failed or success'
+            deleteDir()
         }
         success{
             echo 'Hello-world successfull condition'
