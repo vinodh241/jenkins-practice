@@ -4,6 +4,7 @@ pipeline {
             label 'AGENT-1'
         }
     }
+     // Build 
     stages {
         stage('Checkout'){
             steps{
@@ -20,5 +21,17 @@ pipeline {
                 echo 'Deploy....'
             }
         }
+    }
+    post{
+        always{
+            echo 'Hello-world Pipeline job successfull -when its failed or success'
+        }
+        success{
+            echo 'Hello-world successfull condition'
+        }
+        failure{
+            echo 'Hello-world failure condition'
+        }
+
     }
 }
