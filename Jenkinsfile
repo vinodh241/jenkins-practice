@@ -12,6 +12,12 @@ pipeline {
     }
     options{
         timeout(time: 30, unit: 'MINUTES')
+        disableConcurrentBuilds()
+    }
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Jenkins', description: 'Who to say hello to')
+        choice(name: 'ENV', choices: ['dev', 'qa', 'prod'], description: 'Target Environment')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests?')
     }
      // Build 
     stages {
@@ -22,6 +28,7 @@ pipeline {
                         echo "Hello CheckOut"
                         sleep 10 
                         env 
+                        echo "Hello ${params.PERSON}, deploying to ${params.ENV}"
                     """
                 }
             }
