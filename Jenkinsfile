@@ -3,8 +3,9 @@ pipeline {
         node {
             label 'AGENT-1'
         }
-    enviornment{
-        profile='Dev'
+    }
+    enviornment {
+        profile='DEV'
     }
     }
      // Build 
