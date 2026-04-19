@@ -6,6 +6,10 @@ pipeline {
     }
     environment { 
         My_APP_NAME= "DEV"
+        DB_NAME= "DEV_APP_01"
+        DB_IP= "10.0.0.1"
+        DB_HOST= "DEV_APPP_01"
+        
     }
      // Build 
     stages {
