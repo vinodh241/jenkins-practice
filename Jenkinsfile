@@ -40,6 +40,7 @@ pipeline {
         }
         stage('Deploy'){
             steps{
+                input message: 'QA passed. Deploy to prod?', submitter: 'release-manager'
                 echo 'Deploy....'
             }
         }
