@@ -4,13 +4,13 @@ pipeline {
             label 'AGENT-1'
         }
     }
-    environment { 
+    environment {
         MY_APP_NAME = "DEV"
         DB_NAME     = "DEV_APP_01"
         DB_IP       = "10.0.0.1"
         DB_HOST     = "DEV_APP_01"
     }
-    options{
+    options {
         timeout(time: 10, unit: 'MINUTES')
         disableConcurrentBuilds()
     }
@@ -19,41 +19,51 @@ pipeline {
         choice(name: 'ENV', choices: ['dev', 'qa', 'prod'], description: 'Target Environment')
         booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests?')
     }
-     // Build 
     stages {
-        stage('Checkout'){
-            steps{
-                script{
+        stage('Checkout') {
+            steps {
+                script {
                     sh """
                         echo "Hello CheckOut"
-                        sleep 10 
-                        env 
+                        sleep 10
+                        env
                         echo "Hello ${params.PERSON}, deploying to ${params.ENV}"
                     """
                 }
             }
         }
-        stage('Build'){
-            steps{
+        stage('Build') {
+            steps {
                 echo 'Building...'
             }
         }
-        stage('Deploy'){
-            steps{
-                input message: 'QA passed. Deploy to prod?', submitter: 'release-manager'
-                echo 'Deploy....'
+        stage('Deploy') {
+            steps {
+                script {
+                    def answer = input(
+                        message: 'QA passed. Deploy to prod?',
+                        submitter: 'release-manager',
+                        parameters: [
+                            choice(name: 'CONFIRM', choices: ['Yes', 'No'], description: 'Proceed with deployment?')
+                        ]
+                    )
+                    if (answer == 'No') {
+                        error('Deployment rejected.')
+                    }
+                    echo 'Deploying....'  // ✅ moved inside script block
+                }
             }
         }
     }
-    post{
-        always{
+    post {
+        always {
             echo 'Hello-world Pipeline job'
-           // deleteDir()
+            // deleteDir()
         }
-        success{
-            echo 'Hello-world job executed successfull condition'
+        success {
+            echo 'Hello-world job executed successfully'
         }
-        failure{
+        failure {
             echo 'Hello-world failure condition'
         }
     }
