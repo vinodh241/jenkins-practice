@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'AGENT-1'
-        }
-    }
+    agent any
     environment {
         MY_APP_NAME = "DEV"
         DB_NAME     = "DEV_APP_01"
