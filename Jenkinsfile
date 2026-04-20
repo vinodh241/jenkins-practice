@@ -40,6 +40,16 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    def answer = input(
+                        message: 'QA passed. Deploy to prod?',
+                        submitter: 'release-manager',
+                        parameters: [
+                            choice(name: 'CONFIRM', choices: ['Yes', 'No'], description: 'Proceed with deployment?')
+                        ]
+                    )
+                    if (answer == 'No') {
+                        error('Deployment rejected.')
+                    }
                     echo 'Deploying....'  // ✅ moved inside script block
                 }
             }
