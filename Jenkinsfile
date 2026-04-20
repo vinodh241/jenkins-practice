@@ -11,7 +11,7 @@ pipeline {
         DB_HOST     = "DEV_APP_01"
     }
     options{
-        timeout(time: 30, unit: 'MINUTES')
+        timeout(time: 10, unit: 'MINUTES')
         disableConcurrentBuilds()
     }
     parameters {
