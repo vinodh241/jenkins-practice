@@ -5,6 +5,7 @@ pipeline {
         }
     }
     environment {
+        PATH = "/usr/local/bin:/usr/bin:${env.PATH}"
         MY_APP_NAME = "DEV"
         DB_NAME     = "DEV_APP_01"
         DB_IP       = "10.0.0.1"
